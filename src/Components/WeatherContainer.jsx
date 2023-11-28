@@ -28,7 +28,7 @@ const WeatherContainer = ({ weather,  setweather }) => {
                      
                 
                 const response = await axios.get(
-                    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=02a9d4eaae34cf2e680e1559c312edbd&lang=sp&units=${unit}`
+                    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=02a9d4eaae34cf2e680e1559c312edbd&lang=sp&units=metric`
                 );
                 
                 setweather(response.data);

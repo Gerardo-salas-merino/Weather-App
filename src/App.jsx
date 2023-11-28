@@ -61,12 +61,7 @@ function App() {
   
   return (
     <main className={mainClasses}>
-      {weather ? (
-          <WeatherContainer weather={weather} setweather={setweather} />
-        ) : (
-          <span className="mi-span-atractivo">Cargando...</span>
-      )}
-
+    {weather ? <WeatherContainer weather={weather} setweather={setweather} /> : <span className="mi-span-atractivo">Cargando...</span>}
   </main>
   )
 }
