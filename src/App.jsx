@@ -7,7 +7,7 @@ import WeatherContainer from './Components/WeatherContainer';
 function App() {
 
   const [weather, setweather] = useState(null);
-  const [loading, setLoading] = useState(true);
+  
 
   const sucess = (pos) => {
 
@@ -19,18 +19,17 @@ function App() {
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=02a9d4eaae34cf2e680e1559c312edbd&lang=sp&units=metric`)
     .then(({ data }) => setweather(data))
     .catch((err) => console.log(err))
-    .finally(() => setLoading(false));
+    
 
   };
 
 
   useEffect(() => {
-    const timeoutDuration = 3000;
-    const timeoutPromise = new Promise((resolve) => setTimeout(resolve, timeoutDuration));
+    
     
     navigator.geolocation.getCurrentPosition(sucess);
 
-    timeoutPromise.then(() => setLoading(false));
+  
 
   }, [])
 
@@ -58,24 +57,16 @@ function App() {
   };
   
   const iconClass = weather?.weather[0]?.icon || "defaultIcon";
-  const mainClasses = `flex justify-center items-center h-screen bg-white text-white bg-cover ${bgImages[iconClass]} bg-no-repeat bg-center`;
+  const mainClasses = `flex justify-center items-center h-screen bg-black text-white bg-cover ${bgImages[iconClass]} bg-no-repeat bg-center`;
   
   return (
     <main className={mainClasses}>
-      {loading ? (
-        <div className='loading'>
-          <img src='/public/relojColor.gif' alt='loading' className='loading-gif bg-none w-20 h-20' />
-        </div>
-      ) : (
-        <>
-          {weather ? (
-            <WeatherContainer weather={weather} setweather={setweather} />
-          ) : (
-            <span>Cargando...</span>
-          )}
-          
-        </>
+      {weather ? (
+          <WeatherContainer weather={weather} setweather={setweather} />
+        ) : (
+          <span className="mi-span-atractivo">Cargando...</span>
       )}
+
   </main>
   )
 }
