@@ -64,7 +64,7 @@ function App() {
     <main className={mainClasses}>
       {loading ? (
         <div className='loading'>
-          <img src='/public/reloj-arena-color.gif' alt='loading' className='loading-gif bg-none w-20 h-20' />
+          <img src='/public/relojColor.gif' alt='loading' className='loading-gif bg-none w-20 h-20' />
         </div>
       ) : (
         <>
